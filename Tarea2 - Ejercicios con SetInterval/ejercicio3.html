@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio3</title>
+</head>
+
+<body>
+    <button id="btnIniciar" onclick="iniciar()">Iniciar</button>
+    <button id="btnDetener" onclick="detener()">Detener</button>
+    <p id="parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas delectus dolorem labore esse iusto
+        illo. Animi laboriosam nihil aliquam cupiditate sed, impedit quam optio reiciendis id ullam magni cumque
+        assumenda.</p>
+    <script>
+        const boton = document.getElementById("btn")
+        const parrafo = document.getElementById("parrafo")
+        let visible = true
+        let intervalo = null
+        let parpadeando = false
+        function iniciar() {
+            if (!parpadeando) {
+                intervalo = setInterval(parpadeo, 500)
+                parpadeando = true
+            }
+        }
+        function detener() {
+            if(parpadeando){
+            clearInterval(intervalo)
+            parpadeando = false
+            }
+        }
+        function parpadeo() {
+            if (visible) {
+                parrafo.style.visibility = "hidden"
+                visible = false
+            }
+            else {
+                parrafo.style.visibility = "visible"
+                visible = true
+            }
+        }
+    </script>
+</body>
+
+</html>

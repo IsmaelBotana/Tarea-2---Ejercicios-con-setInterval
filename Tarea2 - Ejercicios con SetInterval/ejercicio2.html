@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio2</title>
+    <style>
+        *{
+            background-color: aliceblue;
+        }
+        #aviso{
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <p id="reloj">10</p>
+    <p id="aviso">¡Tiempo!</p>
+    <button id="btn" onclick="contador()" value="Iniciar">Iniciar</button>
+    <script>
+        const reloj = document.getElementById("reloj")
+        const boton = document.getElementById("btn")
+        const aviso = document.getElementById("aviso")
+        let segundos
+        function contador(){
+            if(boton.value === "Iniciar"){
+                boton.innerHTML = "Parar"
+                boton.value = "Parar"
+                aviso.style.color = "aliceblue"
+                segundos = 10
+                reloj.innerHTML = 10
+                cronometro = setInterval(actualizar, 1000)
+            }
+            else if(boton.value === "Parar"){
+                boton.innerHTML = "Iniciar"
+                boton.value = "Iniciar"
+                clearInterval(cronometro)
+            }
+        }
+        function actualizar(){
+            segundos -= 1
+            reloj.innerHTML = segundos
+            if(segundos === 0){
+                aviso.style.color = "grey"
+                clearInterval(cronometro)
+                boton.innerHTML = "Iniciar"
+                boton.value = "Iniciar"
+            }
+        }
+        
+    </script>
+</body>
+</html>

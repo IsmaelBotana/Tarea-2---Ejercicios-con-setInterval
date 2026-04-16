@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio5</title>
+</head>
+<body>
+    <h1 id="numero"></h1>
+    <div class="contenedor">
+        <button onclick="parar()">¡Para!</button>
+        <button id="btnJugarDeNuevo" onclick="jugarDeNuevo()">Jugar de nuevo</button>
+    </div>
+    <p id="parrafo"></p>
+    <script>
+        const numero = document.getElementById("numero")
+        const boton = document.getElementById("btnJugarDeNuevo")
+        const parrafo = document.getElementById("parrafo")
+        let intervalo = setInterval(cambiarNumero, 200)
+        let x
+        parrafo.style.visibility = "hidden"
+        boton.style.visibility = "hidden"
+        function parar(){
+            clearInterval(intervalo)
+            if(x === 7){
+                parrafo.innerHTML = "¡Ganaste!"
+            }
+            else{
+                //seguir aquí
+                parrafo.innerHTML = "Era el " + x + ", inténtalo de nuevo."
+            }
+            parrafo.style.visibility = "visible"
+            boton.style.visibility = "visible"
+        }
+        function jugarDeNuevo(){
+            parrafo.style.visibility = "hidden"
+            boton.style.visibility = "hidden"
+            intervalo = setInterval(cambiarNumero, 200)
+        }
+        function cambiarNumero(){
+            x = parseInt(Math.random() * 10)
+            numero.innerHTML = x
+        }
+    </script>
+</body>
+</html>
